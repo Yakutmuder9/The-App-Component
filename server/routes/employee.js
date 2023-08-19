@@ -47,7 +47,6 @@ router.get("/:empId", (req, res, next) => {
         return;
       }
       res.send(employee);
-
     }, next);
   } catch (err) {
     console.log("err", err);
