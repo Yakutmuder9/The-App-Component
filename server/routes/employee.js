@@ -10,8 +10,8 @@
 "use strict";
 
 const express = require("express");
-const router = express.Router();
 const { mongo } = require("../utils/mongo");
+const router = express.Router();
 
 /**
  * findEmployeeById

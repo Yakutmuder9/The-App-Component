@@ -1,3 +1,10 @@
+/**
+ * Title: auth.guard.ts
+ * Author: Professor Krasso
+ * Modified by: Yakut Ahmedin
+ * Date: 8/16/23
+*/
+
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service'
@@ -14,5 +21,4 @@ export const authGuard: CanActivateFn = (route, state) => {
     router.navigate(['/security/signin'], { queryParams: { returnUrl: state.url } })
     return false
   }
-
 };

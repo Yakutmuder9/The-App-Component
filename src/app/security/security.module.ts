@@ -1,6 +1,7 @@
 /**
  * Title: security.module.ts
  * Author: Professor Krasso
+ * Modified by: Yakut Ahmedin
  * Date: 8/5/23
 */
 

@@ -1,7 +1,8 @@
 /**
  * Title: security.component.ts
  * Author: Professor Krasso
- * Date: 8/5/23
+ * Modified by: Yakut Ahmedin
+ * Date: 8/17/23
  */
 
 // imports statements

@@ -1,3 +1,10 @@
+/**
+ * Title: signin.component.ts
+ * Author: Professor Krasso
+ * Modified by: Yakut Ahmedin
+ * Date: 8/16/23
+ */
+
 import { Component } from '@angular/core';
 import { SecurityService } from "./../security.service";
 import { FormBuilder, Validators } from "@angular/forms"

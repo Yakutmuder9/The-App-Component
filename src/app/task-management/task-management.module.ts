@@ -1,3 +1,10 @@
+/**
+ * Title: task-management.module.ts
+ * Author: Professor Krasso
+ * Modified by: Yakut Ahmedin
+ * Date: 8/16/23
+*/
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
