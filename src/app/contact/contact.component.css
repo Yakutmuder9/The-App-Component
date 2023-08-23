@@ -1,0 +1,49 @@
+.contact-card {
+    border-radius: 15px;
+    background: linear-gradient(136deg, rgba(115, 194, 85, 0.24) 0%, rgba(252, 115, 214, 0.24) 100%);
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.11);
+}
+
+.contact-card h1 span {
+    color: #008000;
+}
+
+
+.contact-left input,
+select {
+    width: 100%;
+    padding: 16px 30px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid #008000;
+    background: #ffffff23;
+    margin: 12px 0px;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.11);
+    max-width: 500px;
+}
+
+
+.contact-left button {
+    background: #008000;
+    width: 100%;
+    max-width: 500px;
+    color: #fff;
+    padding: 10px 20px 10px 20px;
+    border: none;
+    margin-top: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.11);
+}
+
+.contact-right .contact-right-card {
+    display: flex;
+    padding: 32px 48px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    background: rgba(128, 128, 128, 0.32);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(50px);
+}

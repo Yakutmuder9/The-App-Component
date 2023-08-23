@@ -1,52 +1,171 @@
-<div class="container-fluid">
-  <h1 class="text-center">Welcome to the Nodebucket Application!</h1>
+<div class="container overflow-hidden">
+  <div class="first-imp text-center mb-3 mt-5">
+    <span class="fire-notice"
+      ><img src="./assets/fire.png" alt="" /> Simple and free task management
+      app
+    </span>
 
-  <div class="row mt-5">
+    <h1>Manage Your Task</h1>
+
+    <p class="imp-disc">
+      Makes it easier than ever to streamline your to-do list, prioritize tasks,
+      and track your progress.
+    </p>
+    <div
+      class="subscribe-filed d-flex text-center align-items-center justify-content-center"
+    >
+      <input type="text" placeholder="Enter Your Email" />
+      <button>Get Start</button>
+    </div>
+    <div class="email-note">
+      <span class="d-flex justify-content-center pt-2 px-3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="24"
+          viewBox="0 0 22 24"
+          fill="none"
+        >
+          <path
+            d="M11 23.0945C17.0753 23.0945 22 17.9248 22 11.5473C22 5.16971 17.0753 0 11 0C4.9247 0 0 5.16971 0 11.5473C0 17.9248 4.9247 23.0945 11 23.0945Z"
+            fill="#008000"
+          />
+          <path
+            d="M5.5 12.1246L8.8 15.5888L16.5 7.50568"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <p class="ps-1">
+          It's <span class="text-success"> 100% free</span> and we will never
+          send more than one email per month
+        </p></span
+      >
+    </div>
+
+    <div class="container d-sm-flex align-items-center justify-content-center">
+      <div class="task-creation-org-card text-start">
+        <img src="./assets/flight-to.png" alt="" class="flight-to" />
+        <h2 class="text-light">Task Creation and Organization</h2>
+        <p>
+          Unlock your productivity with our free Task Creation app – where
+          seamless organization meets user-friendly simplicity.
+        </p>
+        <div
+          class="testimonial-preview d-flex align-items-center justify-content-between"
+        >
+          <h5>Testimonials - v1</h5>
+          <button>Preview</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="d-flex align-items-center justify-content-center">
+    <hr class="w-50 px-5 shadow"  />
+  </div>
+  <h1 class="text-center mt-5">Welcome to the Nodebucket Application!</h1>
+
+  <div class="row mt-5 pages-card">
     <div class="col-sm-4">
       <figure>
-        <a routerLink="/task-managment/my-tasks">
+        <a routerLink="/home">
           <img
             src="./assets/todo.jpg"
             alt="person writing bucket list"
             class="img-fluid"
         /></a>
-        <h1>Tasks</h1>
-        <p>
-          Nodebucket is a simple to-do list application that allow you to manage
-          and keep track of your tasks.
-          
-        </p>
+        <div class="card-contents">
+          <h1>Tasks</h1>
+          <p>
+            Nodebucket is a simple to-do list application that allow you to
+            manage and keep track of your tasks.
+          </p>
+        </div>
       </figure>
     </div>
 
     <div class="col-sm-4">
       <figure>
-        <a routerLink="/task-managment/my-tasks">
+        <a routerLink="/about">
           <img
             src="./assets/about-us.jpg"
             alt="framed eyeglasses on top of a book"
             class="img-fluid"
         /></a>
-        <h1>About Us</h1>
-        <p>Learn more about our campany and why Nodebucket is right for you!</p>
+        <div class="card-contents">
+          <h1>About Us</h1>
+          <p>
+            Learn more about our campany and why Nodebucket is right for you!
+          </p>
+        </div>
       </figure>
     </div>
 
     <div class="col-sm-4">
       <figure>
-        <a routerLink="/task-managment/my-tasks">
+        <a routerLink="/contact">
           <img
             src="./assets/contact-us.jpg"
             alt="person writing bucket list"
             class="img-fluid"
         /></a>
-        <h1>Contact Us</h1>
-        <p>
-          Have question? We have asnwer
-        </p>
+        <div class="card-contents">
+          <h1>Contact Us</h1>
+          <p>Have question? We have asnwer</p>
+        </div>
       </figure>
     </div>
+    <a routerLink="/security">Test Security Module</a>
   </div>
 
-  <a routerLink="/security">Test Security Module</a>
+ 
+
+  <div class="text-center">
+    <h1><img src="./assets/link.png" alt="" /> Testimonial</h1>
+  </div>
+ <div class="d-flex align-items-center justify-content-center ">
+    <hr class="w-50 px-5 shadow "  />
+  </div>
+  <div class="row gy-5 mt-4 testimonials-items">
+    <div class="col-sm-4">
+      <div class="p-3 border tasti-card">
+        <img src="./assets/Vector.png" alt="" />
+        <p class="pt-2">
+          If anyone is looking to create a book cover, this is the place you
+          need to visit.
+        </p>
+        <div class="text-end"><i>Jaydon Bator</i></div>
+      </div>
+      <div class="profile-img"></div>
+    </div>
+    <div class="pink-circle"></div>
+
+    <div class="col-sm-4">
+      <div class="p-3 border tasti-card">
+        <img src="./assets/Vector.png" alt="" />
+        <p class="pt-2">
+          If anyone is looking to create a book cover, this is the place you
+          need to visit.
+        </p>
+        <div class="text-end"><i>Jaydon Bator</i></div>
+        <div class="profile-img"></div>
+      </div>
+    </div>
+
+    <div class="blue-circle"></div>
+    <div class="col-sm-4">
+      <div class="p-3 border tasti-card">
+        <img src="./assets/Vector.png" alt="" />
+        <p class="pt-2">
+          If anyone is looking to create a book cover, this is the place you
+          need to visit.
+        </p>
+        <div class="text-end"><i>Jaydon Bator</i></div>
+        <div class="profile-img"></div>
+      </div>
+    </div>
+  </div>
 </div>

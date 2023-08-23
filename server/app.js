@@ -11,7 +11,7 @@ const createServer = require("http-errors");
 const path = require("path");
 const employeeRoute = require("./routes/employee");
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json"); 
+const swaggerDocument = require("./swagger.json");
 
 // Create the Express app
 const app = express();

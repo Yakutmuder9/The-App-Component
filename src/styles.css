@@ -6,6 +6,15 @@
 */
 
 /* You can add global styles to this file, and also import other style files */
+body {
+    background: linear-gradient(180deg, #D2E6EF 0%, #94D294 100%);
+}
+
+.container {
+    max-width: 1400px !important;
+    padding: 7px !important;
+}
+
 .text-underline-hover {
     text-align: center;
 }
@@ -17,12 +26,13 @@
 .full-height {
     height: 100vh !important;
 }
-.link:hover{
+
+.link:hover {
     cursor: pointer;
 }
 
 /* Mobile view ports */
-@media only screen and (max-width: 576px) {
+/* @media only screen and (max-width: 576px) {
     .dropdown-menu {
         background-color: #212529 !important;
         color: rgba(255, 255, 255, 0.55) !important;
@@ -41,5 +51,4 @@
         
     }
 
-}
-
+} */

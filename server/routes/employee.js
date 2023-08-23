@@ -60,7 +60,8 @@ router.get("/:empId", (req, res, next) => {
         next(err);
         return;
       }
-      res.send(employee);
+
+      res.send(employee); //return the task array
     }, next);
   } catch (err) {
     console.log("err", err);
@@ -140,5 +141,4 @@ router.post("/:empId/tasks", (req, res, next) => {
     next(error);
   }
 });
-
 module.exports = router;

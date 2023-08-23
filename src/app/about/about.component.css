@@ -1,0 +1,26 @@
+.about-page {
+    width: 100%;
+
+}
+
+.about-brand {
+    position: relative;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    text-align: center;
+    background: linear-gradient(to right, #0080001e, #f58bff6e);
+}
+
+.about-brand::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 20px;
+    background: linear-gradient(to right, #00800059, #ff8b8b31);
+    z-index: -1;
+}
+

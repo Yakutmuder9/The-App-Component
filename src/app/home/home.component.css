@@ -1,0 +1,193 @@
+.first-imp .fire-notice {
+    border: 1px solid #008000;
+    width: 95%;
+    padding: 2px 20px 5px 20px;
+    margin: 10px;
+    height: 40px;
+    border-radius: 20px;
+    font-weight: 600;
+    background: linear-gradient(146deg, #0252025b 0%, #6a02a74f 100%);
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.11);
+
+}
+
+.first-imp h1 {
+    font-size: 8vmin;
+    margin-top: 20px;
+    font-weight: 900;
+}
+
+.imp-disc {
+    padding: 12px 10%;
+    font-size: 3.4vmin;
+}
+
+.subscribe-filed input {
+    width: 100%;
+    max-width: 650px;
+    padding: 15px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #008000;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.11);
+}
+
+.subscribe-filed button {
+    border: 1px solid #008000;
+    padding: 15px 2vmin;
+    margin: 10px;
+    font-weight: 600;
+    font-size: large;
+    height: 57px;
+    white-space: nowrap;
+    border-radius: 10px;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.11);
+}
+
+/* .email-note p {
+    min-width: 1000px;
+} */
+
+.task-creation-org-card {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    background-blend-mode: soft-light, normal;
+    backdrop-filter: blur(16.781784057617188px);
+    background-image: url(../../assets/rec-bord.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 30px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+    border-radius: 20px;
+}
+
+.task-creation-org-card h2 {
+    margin-top: 3vmin;
+    font-size: 6vmin;
+    max-width: 75%;
+}
+
+.task-creation-org-card p {
+    color: silver;
+    margin-top: 8vmin;
+    margin-bottom: 50px;
+    max-width: 75%;
+    font-size: 3vmin;
+}
+
+.task-creation-org-card .flight-to {
+    position: absolute;
+    right: -5%;
+    top: -25%;
+    width: 35%;
+}
+
+.testimonial-preview {
+    position: absolute;
+    background: #FFF;
+    width: 94%;
+    padding: 20px 20px;
+    border-radius: 18px;
+    box-shadow: 0px 12px 24px 0px rgba(20, 20, 43, 0.04), 0px -2px 4px 0px rgba(20, 20, 43, 0.02), 0px 3px 14px 0px rgba(74, 58, 255, 0.03);
+}
+
+.testimonial-preview button {
+    background: #008000;
+    padding: 2px 20px 5px 20px;
+    margin: 10px;
+    border: none;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 20px;
+    box-shadow: 0px 4px 2px 0px #0000001c;
+    border-radius: 50px;
+    background: rgba(115, 194, 85, 0.41);
+}
+
+.pages-card figure img {
+    border-radius: 25px;
+}
+
+.pages-card .card-contents {
+    background-image: url(../../assets/card-glass.png);
+    fill: rgba(237, 252, 255, 0.37);
+    backdrop-filter: blur(27.5px);
+    height: 200px;
+    transform: translateY(-80px);
+    padding: 30px 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+}
+
+.testimonials-items .col-sm-4 {
+    position: relative;
+}
+
+.testimonials-items .col-sm-4 .tasti-card {
+    padding: 12px;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    box-shadow: 0px 4px 2px 0px #0000001c;
+    z-index: 4;
+    position: relative;
+
+}
+
+.profile-img {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 60px;
+    z-index: 6;
+    top: -30px;
+    right: 10%;
+    background-image: url(../../assets/pr-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pink-circle,
+.blue-circle {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    opacity: 80%;
+    border-radius: 60px;
+    background: linear-gradient(180deg, #5901B1 0%, #FF73B6 100%);
+    z-index: 1;
+    transform: translateY(140px);
+}
+
+.blue-circle {
+    transform: translateY(10px);
+    left: 64%;
+    opacity: 50%;
+    background: linear-gradient(180deg, #73D4FF 0%, #0167B1 100%);
+}
+
+@media only screen and (max-width: 576px) {
+    .first-imp .fire-notice {
+        width: 100%;
+        font-size: smaller;
+    }
+
+    .container {
+        padding: 3px !important;
+    }
+
+    .testimonial-preview {
+        height: 80px;
+        width: 90%;
+    }
+
+    .testimonial-preview h5 {
+        font-size: 15px;
+    }
+
+}
