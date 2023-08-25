@@ -27,8 +27,14 @@ nav {
 
 
 @media only screen and (max-width: 576px) {
+    nav {
+        height: 54px;
+    }
+    .logo {
+        height: 34px;
+    }
     #navbarResponsive {
-        top: 62px;
+        top: 54px;
         position: absolute;
         right: -1px;
         margin: 0px;

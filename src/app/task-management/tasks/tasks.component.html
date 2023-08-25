@@ -1,48 +1,248 @@
-<div class="container-fluid pt-2 full-hight" style="height: 100vh">
-  <div class="container text-center">
+<div class="container-fluid pt-2" style="min-height: 600px">
+  <div class="container">
     <h1 class="text-center">My Task!</h1>
-    <div class="add-task my-4">
-      <input type="text" placeholder="Enter Your Email " class="w-100" />
-      <button><strong>Add Task</strong></button>
+
+    <!-- error message -->
+    <div class="row justify-content-center py-2">
+      <div class="col-sm-10 col-md-8 col-lg-6">
+        <div *ngIf="errorMessage">
+          <div class="alert alert-danger" role="alert">
+            {{ errorMessage }}
+          </div>
+        </div>
+
+        <div *ngIf="successMessage">
+          <div class="alert alert-success" role="alert">
+            {{ successMessage }}
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- end error message -->
 
-    <div
-      class="task-item-container d-block d-lg-flex justify-content-between gap-4"
-    >
-    <!-- task block -->
-      <div class="task">
-        <button><strong> Tasks</strong></button>
-        <div class="new-task-card text-start">
-          <h5>Finish Research Pape</h5>
-          <p>Complete the final draft of the research paper for History class . ...</p>
-     
-        </div>
-        <div class="new-task-card text-start">
-          <h5>Finish Research Pape</h5>
-          <p>Complete the final draft of the research paper for History class . ...</p>
-        </div>
-      </div>
-<!-- doing bllock -->
-      <div class="doing">
-        <button><strong> Doing</strong></button>
-        <div class="doing-task-card text-start">
-          <h5>Finish Research Pape</h5>
-          <p>Complete the final draft of the research paper for History class . ...</p>
-        </div>
-      </div>
+    <!-- form goes here -->
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-md-8 col-lg-6">
+        <form [formGroup]="newTaskForm" (ngSubmit)="addTask()">
+          <div class="input-group mb-3" id="addTaskForm">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="text"
+              placeholder="Add new task"
+              aria-label="Add new task"
+              aria-describedby="btnAdd"
+            />
+            <button
+              class="btn btn-outline-success px-3"
+              type="submit"
+              [disabled]="!newTaskForm.valid"
+              id="btnAdd"
+            >
+              Add
+            </button>
+          </div>
 
-<!--  done block -->
-      <div class="done">
-        <button><strong> Done</strong></button>
-        <div class="done-task-card text-start">
-          <h5>Finish Research Pape</h5>
-          <p>Complete the final draft of the research paper for History class . ...</p>
+          <!-- testing -->
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              class="form-check-input"
+              formControlName="category"
+              name="category"
+              id="testingRadio"
+              value="testing"
+              style="border-color: #008000;"
+            />
+            <label for="testingRadio" class="form-check-label">Testing</label>
+          </div>
+
+          <!-- meeting -->
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              class="form-check-input"
+              formControlName="category"
+              name="category"
+              id="meetingsRadio"
+              value="meetings"
+            />
+            <label for="meetingRadio" class="form-check-label">Meeting</label>
+          </div>
+
+          <!-- project -->
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              class="form-check-input"
+              formControlName="category"
+              name="category"
+              id="projectsRadio"
+              value="projects"
+            />
+            <label for="projectRadio" class="form-check-label">Project</label>
+          </div>
+
+          <!-- other -->
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              class="form-check-input"
+              formControlName="category"
+              name="category"
+              id="otherRadio"
+              value="other"
+            />
+            <label for="otherRadio" class="form-check-label">Other</label>
+          </div>
+
+          <!--  error handling -->
+          <div class="mt-2">
+            <!-- required -->
+            <div
+              *ngIf="
+                newTaskForm.controls['text'].touched &&
+                newTaskForm.controls['text'].hasError('required')
+              "
+            >
+              <div
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                Please enter a task!
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                ></button>
+              </div>
+            </div>
+
+            <!-- min length -->
+            <div
+              *ngIf="
+                newTaskForm.controls['text'].touched &&
+                newTaskForm.controls['text'].hasError('minLength')
+              "
+            >
+              <div
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                The task field must be at least 3 character long!
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                ></button>
+              </div>
+            </div>
+
+            <!-- max length -->
+            <div
+              *ngIf="
+                newTaskForm.controls['text'].touched &&
+                newTaskForm.controls['text'].hasError('maxLength')
+              "
+            >
+              <div
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                The task field must be at most 3 character long!
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- form end here-->
+
+    <!-- task length -->
+    <div class="row gy-3 mt-2 justify-content-center">
+      <!-- todo column -->
+      <div class="col-sm-5 col-md-4 col-lg-3" id="todo">
+        <h4 class="text-center">ToDo</h4>
+        <div class="p-3 border bg-light" id="todoCont">
+          <div class="container">
+            <!-- message for no todo tasks -->
+            <div *ngIf="!todo || todo.length === 0">
+              <div class="alert alert-info">No tasks to do yet!</div>
+            </div>
+            <!--  end message for no todo -->
+
+            <!-- new task card start-->
+            <div *ngFor="let item of todo" class="mt-2" id="newtaskCard">
+              <div class="row border bg-white">
+                <div class="col-sm-6">
+                  <div class="card-body">
+                    <button
+                      *ngIf="item.category.categoryName != 'other'"
+                      [ngStyle]="{
+                        'background-color': item.category.backgroundColor
+                      }"
+                      data-bs-toggle="tooltip"
+                      title="{{ item.category.categoryName }}"
+                      style="width: 25%"
+                      class="btn"
+                    ></button>
+                    <div>
+                      {{ item.text }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- end of todo -->
+
+      <!-- done column -->
+      <div class="col-sm-5 col-md-4 col-lg-3" id="done">
+        <h4 class="text-center">Done</h4>
+
+        <div class="p-3 border bg-light" id="doneCont">
+          <div class="container">
+            <!--  message for no done tasks -->
+            <div *ngIf="!done || done.length === 0">
+              <div class="alert alert-info">No tasks to done yet!</div>
+            </div>
+
+            <!-- end message for  no done -->
+            <div *ngFor="let item of done" class="mt-2">
+              <div class="row border bg-white">
+                <div class="col-sm-6">
+                  <div class="card-body">
+                    <button
+                      *ngIf="item.category.categoryName != 'other'"
+                      [ngStyle]="{
+                        'background-color': item.category.backgroundColor
+                      }"
+                      data-bs-toggle="tooltip"
+                      title="{{ item.category.categoryName }}"
+                      style="width: 25%"
+                      class="btn"
+                    ></button>
+                    <div>
+                      {{ item.text }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of done -->
     </div>
   </div>
 </div>
-
-
-
-
