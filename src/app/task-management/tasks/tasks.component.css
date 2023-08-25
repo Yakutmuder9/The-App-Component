@@ -1,4 +1,4 @@
-.add-task input {
+/* .add-task input {
     width: 100%;
     max-width: 650px;
     padding: 16px 130px 16px 30px;
@@ -67,4 +67,38 @@
 .done-task-card {
     background: linear-gradient(146deg, #FFE5EF 0%, #ad015179 100%);
     border: 1px solid #d301c84d;
+} */
+
+
+#addTaskForm input {
+    padding: 16px 130px 16px 30px;
+    outline: none;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.11);
+    border: 1px solid #008000;
+}
+
+#addTaskForm input:focus,
+#addTaskForm input:hover {
+    border: 1px solid #1eff01;
+}
+
+#addTaskForm button {
+    font-weight: 600;
+    box-shadow: 0px 4px 2px 0px #0000001c;
+}
+
+#todo h4,
+#done h4 {
+    border: 1px solid #0080005e;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 2px 0px #0000001e;
+}
+
+#todoCont,
+#doneCont {
+    border-radius: 12px;
+    border: 1px solid #008000;
+    box-shadow: 0px 4px 2px 0px #0000001c;
+    
 }

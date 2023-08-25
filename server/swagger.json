@@ -1,70 +1,123 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "NodeBucket API Documentation",
-      "version": "1.0.0",
-      "description": "API documentation for NodeBucket application"
-    },
-    "paths": {
-      "/api/employees/{empId}": {
-        "get": {
-          "summary": "Retrieve an employee by ID",
-          "description": "Retrieve employee details by providing the employee ID",
-          "tags": ["Employees"],
-          "parameters": [
-            {
-              "name": "empId",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "minimum": 1007,
-                "maximum": 1012
-              },
-              "description": "Numeric ID of the employee to retrieve"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Employee details successfully retrieved",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Employee"
-                  }
+  "openapi": "3.0.0",
+  "info": {
+    "title": "NodeBucket API Documentation",
+    "version": "1.0.0",
+    "description": "API documentation for NodeBucket application"
+  },
+  "paths": {
+    "/api/employees/{empId}": {
+      "get": {
+        "summary": "Retrieve an employee by ID",
+        "description": "Retrieve employee details by providing the employee ID",
+        "tags": [
+          "Employees"
+        ],
+        "parameters": [
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1007,
+              "maximum": 1012
+            },
+            "description": "Numeric ID of the employee to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee details successfully retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employee"
                 }
               }
-            },
-            "400": {
-              "description": "Bad Request - Input must be a number"
-            },
-            "404": {
-              "description": "Employee with the specified empId not found"
-            },
-            "500": {
-              "description": "Internal Server Error - Database connection issue"
             }
+          },
+          "400": {
+            "description": "Bad Request - Input must be a number"
+          },
+          "404": {
+            "description": "Employee with the specified empId not found"
+          },
+          "500": {
+            "description": "Internal Server Error - Database connection issue"
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "Employee": {
-          "type": "object",
-          "properties": {
-            "empId": {
-              "type": "integer"
-            },
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
+    "/api/employees/{empId}/tasks": {
+      "post": {
+        "summary": "Create a new task for an employee",
+        "tags": [
+          "Tasks"
+        ],
+        "parameters": [
+          {
+            "name": "empId",
+            "in": "path",
+            "required": true,
+            "description": "Employee ID",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Task"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Task created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Unable to create tasks for empId"
           }
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "empId": {
+            "type": "integer"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          }
+        }
+      },
+      "Task": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    }
   }
-  
+}

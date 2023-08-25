@@ -11,6 +11,9 @@ import { CommonModule } from '@angular/common';
 import { TaskManagementRoutingModule } from './task-management-routing.module';
 import { TaskManagementComponent } from './task-management.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,7 +23,12 @@ import { TasksComponent } from './tasks/tasks.component';
   ],
   imports: [
     CommonModule,
-    TaskManagementRoutingModule
+    TaskManagementRoutingModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
+
 export class TaskManagementModule { }

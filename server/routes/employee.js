@@ -12,18 +12,30 @@
 const express = require("express");
 const { mongo } = require("../utils/mongo");
 const router = express.Router();
-const { ObjectId } = require('mongodb');
+const { ObjectId } = require("mongodb");
 const Ajv = require("ajv");
 
 const ajv = new Ajv(); // create new instance of ajv class
+
+//  category schema
+const categorySchema = {
+  type: "object",
+  properties: {
+    categoryName: { type: "string" },
+    backgroundColor: { type: "string" },
+  },
+  required: ["categoryName", "backgroundColor"],
+  additionalProperties: false,
+};
 
 //  define the schema to validate t he new task
 const taskSchema = {
   type: "object",
   properties: {
     text: { type: "string" },
+    category: categorySchema,
   },
-  required: ["text"],
+  required: ["text", "category"],
   additionalProperties: false,
 };
 
@@ -96,13 +108,14 @@ router.post("/:empId/tasks", (req, res, next) => {
         return;
       }
 
-      const { text } = req.body;
+      const { task } = req.body;
 
-      console.log("req.body", req.body);
+      console.log("req.new task ", task);
+      console.log("body ", req.body);
 
       // validate the req boject
       const validator = ajv.compile(taskSchema);
-      const valid = validator({ text });
+      const valid = validator(task);
 
       console.log("valid", valid);
 
@@ -115,14 +128,16 @@ router.post("/:empId/tasks", (req, res, next) => {
         return;
       }
 
-      const task = {
+      // build the task object to insert into MongoDB atlas
+      const newTask = {
         _id: new ObjectId(),
-        text,
+        text: task.text,
+        category: task.category,
       };
 
       const result = await db
         .collection("employees")
-        .updateOne({ empId }, { $push: { todo: task } });
+        .updateOne({ empId }, { $push: { todo: newTask } });
 
       console.log("result", result);
 
@@ -134,11 +149,12 @@ router.post("/:empId/tasks", (req, res, next) => {
         return;
       }
 
-      res.status(201).send({ id: task._id });
+      res.status(201).send({ id: newTask._id });
     }, next);
   } catch (error) {
     console.log("err", error);
     next(error);
   }
 });
+
 module.exports = router;

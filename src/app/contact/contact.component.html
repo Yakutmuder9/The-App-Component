@@ -1,7 +1,7 @@
 <div class="contact-page">
   <div class="container">
     <div
-      class="contact-card d-block d-md-flex align-items-center justify-content-between shadow my-3 p-3"
+      class="contact-card d-block d-md-flex align-items-center justify-content-between shadow my-3 py-3 p-1"
     >
       <div class="contact-left py-3 px-3">
         <h1>Get in <span>Touch</span></h1>
@@ -22,38 +22,83 @@
           <option value="other">Other</option>
         </select>
         <button>SEND</button>
-        <div class="contact-no d-flex justify-content-between">
+        <div
+          class="contact-no d-sm-flex justify-content-between"
+          style="max-width: 500px"
+        >
           <div class="phone-no">
             <img src="" alt="" />
-            <div class="">
+            <div class="d-flex d-sm-block justify-content-between gap-2">
               <h6>PHONE</h6>
-              <p>123-456-6789</p>
+              <p><a href="tel-4025555555" class="text-underline-hover"> (402) 555-5555</a></p>
             </div>
           </div>
           <div class="fax-no">
             <img src="" alt="" />
-            <div class="">
+            <div class="d-flex d-sm-block justify-content-between gap-2">
               <h6>FAX</h6>
               <p>01 2345 6789</p>
             </div>
           </div>
           <div class="email-no">
             <img src="" alt="" />
-            <div class="">
+            <div class="d-flex d-sm-block justify-content-between gap-2">
               <h6>Email</h6>
-              <p>Nodebucket@exmaple.com</p>
+              <p>
+                <a
+                  href="mailto:support@nodebucket.com"
+                  class="text-underline-hover text-secondary-emphasis"
+                >
+                  support@nodebucket.com</a
+                >
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="contact-right py-3 px-3 w-100">
+      <div class="contact-right py-3 w-100">
         <div class="contact-right-card">
-          <h4>
-            Thank you for choosing Nodebucket. Let's conquer your to-do list
-            together!
-          </h4>
-          <h2>Get Started Today</h2>
+          <div class="w-100 text-center">
+            <h2 class="py-3">Ready to get Started? Contact us today.</h2>
+            <h4>
+              <a
+                href="tel-4025555555"
+                class="btn btn-outline-secondary btn-lg bg-dark text-white d-sm-none"
+              >
+                (402) 555-5555</a
+              >
+            </h4>
+            <h4 class="d-none d-sm-block ">
+              (402) 555-5555
+            </h4>
+
+            <h4>
+              Email us:
+              <a
+                href="mailto:support@nodebucket.com"
+                class="text-underline-hover text-secondary-emphasis"
+              >
+                support@nodebucket.com</a
+              >
+            </h4>
+
+            <h4 class="text-center">
+              Vist us at: 1000 Galvin Road South, Bellevue, Ne 68005
+            </h4>
+          </div>
+
+          <div class="w-100">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.2452240990033!2d-95.91975738787745!3d41.15100011050433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8793886b1d7a1565%3A0x79b8af7b5882cbac!2s1000%20Galvin%20Rd%20S%2C%20Bellevue%2C%20NE%2068005!5e0!3m2!1sen!2sus!4v1692894370850!5m2!1sen!2sus"
+              width="100%"
+              height="auto"
+              style="border: 2px solid #008000; min-height: 400px"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
