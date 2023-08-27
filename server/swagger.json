@@ -86,6 +86,9 @@
           },
           "404": {
             "description": "Unable to create tasks for empId"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

@@ -28,7 +28,7 @@ const categorySchema = {
   additionalProperties: false,
 };
 
-//  define the schema to validate t he new task
+// define the schema to validate the new task
 const taskSchema = {
   type: "object",
   properties: {

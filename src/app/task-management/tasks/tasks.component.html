@@ -24,6 +24,7 @@
     <div class="row justify-content-center">
       <div class="col-sm-10 col-md-8 col-lg-6">
         <form [formGroup]="newTaskForm" (ngSubmit)="addTask()">
+          
           <div class="input-group mb-3" id="addTaskForm">
             <input
               type="text"
@@ -52,7 +53,7 @@
               name="category"
               id="testingRadio"
               value="testing"
-              style="border-color: #008000;"
+              style="border-color: #008000"
             />
             <label for="testingRadio" class="form-check-label">Testing</label>
           </div>
