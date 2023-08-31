@@ -19,6 +19,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
+  
   // variables
   employee: Employee
   empId: number
@@ -106,6 +107,34 @@ export class TasksComponent {
       this.errorMessage = ''
       this.successMessage = ''
     }, 3000)
+  }
+
+  deleteTask(taskId: string) {
+    console.log('Task item: ', taskId);
+
+    if (!confirm('Are you sure you want to detele this task?')
+
+    ) { return }
+
+    this.taskService.deleteTask(this.empId, taskId).subscribe({
+      next: () => {
+        console.log('Task deleted wtih Id: ', taskId);
+
+        this.todo = this.todo.filter(t => t._id?.toString() !== taskId)
+        this.done = this.done.filter(t => t._id?.toString() !== taskId)
+
+        this.successMessage = 'Task deleted successfully!'
+        this.hideAlert()
+
+      },
+      error: (err) => {
+        console.log('err', err);
+        this.errorMessage = err.message
+        this.hideAlert()
+
+      }
+    })
+
   }
 
   getTask(text: string, categoryName: string) {

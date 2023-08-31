@@ -39,6 +39,39 @@ const taskSchema = {
   additionalProperties: false,
 };
 
+const tasksSchema = {
+  type: "object",
+  required: ["todo", "done"],
+  additionalProperties: false,
+  properties: {
+    todo: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          _id: { type: "string" },
+          text: { type: "string" },
+          category: categorySchema,
+        },
+        required: ["_id", "text", "category"],
+        additionalProperties: false,
+      },
+    },
+    done: {
+      type: "array",
+      items: {
+        properties: {
+          _id: { type: "string" },
+          text: { type: "string" },
+          category: categorySchema,
+        },
+        required: ["_id", "text", "category"],
+        additionalProperties: false,
+      },
+    },
+  },
+};
+
 /**
  * findEmployeeById
  * Description: Accept value 1007-1012
@@ -49,6 +82,9 @@ const taskSchema = {
  * localhost:3000/api/employees/1008 - 500: Server Error (database not connected)
  */
 
+/**
+ * getTask
+ */
 router.get("/:empId", (req, res, next) => {
   try {
     let { empId } = req.params; // get the empId from the req.parms object
@@ -81,6 +117,9 @@ router.get("/:empId", (req, res, next) => {
   }
 });
 
+/**
+ * addTaskfer
+ */
 router.post("/:empId/tasks", (req, res, next) => {
   try {
     console.log("CreateTask API");
@@ -154,6 +193,135 @@ router.post("/:empId/tasks", (req, res, next) => {
   } catch (error) {
     console.log("err", error);
     next(error);
+  }
+});
+
+/**
+ * updateTask
+ */
+router.put("/:empId/tasks", (req, res, next) => {
+  try {
+    let { empId } = req.params;
+    empId = parseInt(empId, 10);
+
+    if (isNaN(empId)) {
+      const err = new Error("input must be a number");
+      err.status = 400;
+      console.log("err", err);
+      next(err);
+      return;
+    }
+
+    mongo(async (db) => {
+      const employee = await db.collection("employees").findOne({ empId });
+      console.log("employee", employee);
+
+      if (!employee) {
+        const err = new Error("Unable to find employee with empId " + empId);
+        err.status = 404;
+        console.log("err", err);
+        next(err);
+        return;
+      }
+
+      const tasks = req.body;
+      console.log("tasks", tasks);
+
+      const validator = ajv.compile(tasksSchema);
+      const valid = validator(tasks);
+      console.log("valid", valid);
+
+      if (!valid) {
+        const err = new Error("Bad Request");
+        err.status = 400;
+        err.errors = validator.errors;
+        console.log("req.body validation failed", err);
+        next(err);
+        return;
+      }
+
+      const result = await db.collection("employees").updateOne(
+        {
+          empId,
+        },
+        { $set: { todo: tasks.todo, done: tasks.done } }
+      );
+
+      if (!result.modifiedCount) {
+        const err = new Error("Unable to update tasks empId " + empId);
+        err.status = 404;
+        next(err);
+        return;
+      }
+
+      res.status(204).send({ message: "Task updated successfully" });
+    }, next);
+  } catch (err) {
+    console.log("err", err);
+    next(err);
+  }
+});
+
+/**
+ * deleteTasks
+ */
+router.delete("/:empId/tasks/:taskId", (req, res, next) => {
+  console.log("inside the delete tasks function");
+
+  try {
+    let { empId } = req.params;
+    const { taskId } = req.params;
+
+    console.log(`EmpId: ${empId}; TaskId: ${taskId}`);
+
+    empId = parseInt(empId, 10);
+
+    if (isNaN(empId)) {
+      const err = new Error("input must be a number");
+      err.status = 400;
+      console.log("err", err);
+      next(err);
+      return;
+    }
+
+    mongo(async (db) => {
+      let emp = await db.collection("employees").findOne({ empId });
+      console.log("emp", emp);
+      if (!emp) {
+        const err = Error("Unable to find employee with empId " + empId);
+        err.status = 404;
+        console.log("err", err);
+        next(err);
+        return;
+      }
+
+      const todoItems = emp.todo.filter(
+        (task) => task._id.toString() !== taskId.toString()
+      );
+      const doneItems = emp.done.filter(
+        (task) => task._id.toString() !== taskId.toString()
+      );
+
+      console.log(`Todo item: ${todoItems}: Done item: ${doneItems}`);
+
+      const result = await db.collection("employees").updateOne(
+        {
+          empId: empId,
+        },
+        {
+          $set: {
+            todo: todoItems,
+            done: doneItems,
+          },
+        }
+      );
+
+      console.log("result ", result);
+      res.status(204).send({ message: "Task deleted successfully" });
+    }, next);
+  } catch (err) {
+    console.log("err", err);
+    next(err);
   }
 });
 
