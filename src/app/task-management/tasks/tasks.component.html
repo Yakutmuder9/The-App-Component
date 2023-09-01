@@ -169,10 +169,18 @@
     <!-- task length -->
     <div class="row gy-3 mt-2 justify-content-center">
       <!-- todo column -->
-      <div class="col-sm-5 col-md-4 col-lg-3" id="todo">
+      <div class="col-sm-5 col-md-4 col-lg-3">
         <div class="p-3" id="todoCont">
           <h4 class="text-center">ToDo</h4>
-          <div class="container">
+          <div
+            class="container task-column"
+            id="todo"
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[doneList]"
+            (cdkDropListDropped)="drop($event)"
+          >
             <!-- message for no todo tasks -->
             <div *ngIf="!todo || todo.length === 0">
               <div class="alert alert-info">No tasks to do yet!</div>
@@ -180,7 +188,7 @@
             <!--  end message for no todo -->
 
             <!-- new task card start-->
-            <div *ngFor="let item of todo" class="mt-2">
+            <div *ngFor="let item of todo" cdkDrag class="mt-2">
               <div class="row py-2" id="newtaskCard">
                 <div class="col-6">
                   <div class="card-body">
@@ -204,7 +212,7 @@
                 <div class="col-6">
                   <div class="card-body float-end">
                     <button class="btn" (click)="deleteTask(item._id ?? '')">
-                      <span class="material-icons  del-icon">delete</span>
+                      <span class="material-icons del-icon">delete</span>
                     </button>
                   </div>
                 </div>
@@ -220,15 +228,22 @@
       <div class="col-sm-5 col-md-4 col-lg-3" id="done">
         <div class="p-3" id="doneCont">
           <h4 class="text-center">Done</h4>
-          <div class="container">
+          <div
+            class="container task-column"
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList]"
+            (cdkDropListDropped)="drop($event)"
+          >
             <!--  message for no done tasks -->
             <div *ngIf="!done || done.length === 0">
               <div class="alert alert-info">No tasks to done yet!</div>
             </div>
 
             <!-- end message for  no done -->
-            <div *ngFor="let item of done" class="mt-2">
-              <div class="row  py-2" id="doneTaskCard">
+            <div *ngFor="let item of done" cdkDrag class="mt-2">
+              <div class="row py-2" id="doneTaskCard">
                 <div class="col-6">
                   <div class="card-body">
                     <button
@@ -250,7 +265,7 @@
                 <div class="col-6">
                   <div class="card-body float-end">
                     <button class="btn" (click)="deleteTask(item._id ?? '')">
-                      <span class="material-icons del-icon" >delete</span>
+                      <span class="material-icons del-icon">delete</span>
                     </button>
                   </div>
                 </div>
