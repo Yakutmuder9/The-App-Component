@@ -19,7 +19,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
-  
+
   // variables
   employee: Employee
   empId: number
@@ -119,6 +119,9 @@ export class TasksComponent {
     this.taskService.deleteTask(this.empId, taskId).subscribe({
       next: () => {
         console.log('Task deleted wtih Id: ', taskId);
+
+        if (!this.todo) this.todo = []
+        if (!this.done) this.done = []
 
         this.todo = this.todo.filter(t => t._id?.toString() !== taskId)
         this.done = this.done.filter(t => t._id?.toString() !== taskId)

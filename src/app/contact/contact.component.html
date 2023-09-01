@@ -1,77 +1,20 @@
 <div class="contact-page">
   <div class="container">
-    <div
-      class="contact-card d-block d-md-flex align-items-center justify-content-between shadow my-3 py-3 p-1"
-    >
-      <div class="contact-left py-3 px-3">
-        <h1>Get in <span>Touch</span></h1>
-        <p>
-          Are you ready to take control of your tasks and transform the way you
-          manage your responsibilities? Join the Nodebucket community today and
-          experience the difference firsthand.
-        </p>
-        <input type="text" placeholder="Name" />
-        <input type="text" placeholder="Email" />
-        <input type="text" placeholder="Phone umber" />
-        <select type="text" placeholder="How did you findus?" id="howFound">
-          <option value="">Select an option</option>
-          <option value="search">Search engine</option>
-          <option value="social">Social media</option>
-          <option value="recommendation">Recommendation</option>
-          <option value="advertisement">Advertisement</option>
-          <option value="other">Other</option>
-        </select>
-        <button>SEND</button>
-        <div
-          class="contact-no d-sm-flex justify-content-between"
-          style="max-width: 500px"
-        >
-          <div class="phone-no">
-            <img src="" alt="" />
-            <div class="d-flex d-sm-block justify-content-between gap-2">
-              <h6>PHONE</h6>
-              <p><a href="tel-4025555555" class="text-underline-hover"> (402) 555-5555</a></p>
-            </div>
-          </div>
-          <div class="fax-no">
-            <img src="" alt="" />
-            <div class="d-flex d-sm-block justify-content-between gap-2">
-              <h6>FAX</h6>
-              <p>01 2345 6789</p>
-            </div>
-          </div>
-          <div class="email-no">
-            <img src="" alt="" />
-            <div class="d-flex d-sm-block justify-content-between gap-2">
-              <h6>Email</h6>
-              <p>
-                <a
-                  href="mailto:support@nodebucket.com"
-                  class="text-underline-hover text-secondary-emphasis"
-                >
-                  support@nodebucket.com</a
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-right py-3 w-100">
+    <div class="row flex-column flex-md-row contact-card mx-1">
+      <div class="col-12 col-md-6 order-md-2 contact-right">
         <div class="contact-right-card">
           <div class="w-100 text-center">
             <h2 class="py-3">Ready to get Started? Contact us today.</h2>
             <h4>
               <a
                 href="tel-4025555555"
-                class="btn btn-outline-secondary btn-lg bg-dark text-white d-sm-none"
+                class="btn  btn-lg text-white d-sm-none"
+                style="background: #008000;"
               >
                 (402) 555-5555</a
               >
             </h4>
-            <h4 class="d-none d-sm-block ">
-              (402) 555-5555
-            </h4>
+            <h4 class="d-none d-sm-block">(402) 555-5555</h4>
 
             <h4>
               Email us:
@@ -98,6 +41,63 @@
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 order-md-1 contact-left">
+        <h1 class="pt-4">Get in <span>Touch</span></h1>
+        <p>
+          Are you ready to take control of your tasks and transform the way you
+          manage your responsibilities? Join the Nodebucket community today and
+          experience the difference firsthand.
+        </p>
+        <input type="text" placeholder="Name" />
+        <input type="text" placeholder="Email" />
+        <input type="text" placeholder="Phone number" />
+        <select type="text" placeholder="How did you findus?" id="howFound">
+          <option value="">Select an option</option>
+          <option value="search">Search engine</option>
+          <option value="social">Social media</option>
+          <option value="recommendation">Recommendation</option>
+          <option value="advertisement">Advertisement</option>
+          <option value="other">Other</option>
+        </select>
+        <button>SEND</button>
+        <div
+          class="contact-no d-sm-flex justify-content-between"
+          style="max-width: 500px"
+        >
+          <div class="phone-no">
+            <img src="" alt="" />
+            <div class="d-flex d-sm-block justify-content-between gap-2">
+              <h6>PHONE</h6>
+              <p>
+                <a href="tel-4025555555" class="text-underline-hover">
+                  (402) 555-5555</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="fax-no">
+            <img src="" alt="" />
+            <div class="d-flex d-sm-block justify-content-between gap-2">
+              <h6>FAX</h6>
+              <p>01 2345 6789</p>
+            </div>
+          </div>
+          <div class="email-no">
+            <img src="" alt="" />
+            <div class="d-flex d-sm-block justify-content-between gap-2">
+              <h6>Email</h6>
+              <p>
+                <a
+                  href="mailto:support@nodebucket.com"
+                  class="text-underline-hover text-secondary-emphasis"
+                >
+                  support@nodebucket.com</a
+                >
+              </p>
+            </div>
           </div>
         </div>
       </div>

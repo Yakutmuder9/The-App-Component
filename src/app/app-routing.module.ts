@@ -28,7 +28,7 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
-        title: 'Nodebucket: Home'
+        title: 'Nodebucket: Home' // title for the home page
       },
       {
         path: 'about',
@@ -39,6 +39,11 @@ const routes: Routes = [
         path: 'contact',
         component: ContactComponent,
         title: 'Nodebucket: Contact Us'
+      },
+      {
+        path: 'not-found',
+        component: PageNotFoundComponent,
+        title: 'Nodebucket: 404'
       },
       {
         path: 'task-management',
@@ -53,9 +58,9 @@ const routes: Routes = [
     loadChildren: () => import('./security/security.module').then(m => m.SecurityModule)
   },
   {
+    // localhost:4200/asdf
     path: '**',
-    component: PageNotFoundComponent,
-    title: 'Nodebucket: Page Not Found'
+    redirectTo: 'not-found'
   }
 ];
 

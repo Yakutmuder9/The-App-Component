@@ -1,5 +1,6 @@
 .about-page {
     width: 100%;
+    overflow-x: hidden;
 
 }
 
@@ -9,7 +10,7 @@
     border: 1px solid transparent;
     border-radius: 20px;
     text-align: center;
-    background: linear-gradient(to right, #0080001e, #f58bff6e);
+    background: linear-gradient(to right, #00800086, #7047ebc5);
 }
 
 .about-brand::before {
@@ -23,4 +24,3 @@
     background: linear-gradient(to right, #00800059, #ff8b8b31);
     z-index: -1;
 }
-
