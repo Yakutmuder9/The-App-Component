@@ -87,8 +87,8 @@
     box-shadow: 0px 4px 2px 0px #0000001c;
 }
 
-#todo h4,
-#done h4 {
+#todoCont h4,
+#doneCont h4 {
     border: 1px solid #0080005e;
     padding: 5px;
     border-radius: 10px;
@@ -100,5 +100,69 @@
     border-radius: 12px;
     border: 1px solid #008000;
     box-shadow: 0px 4px 2px 0px #0000001c;
-    
+    background-color: #fff;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background-clip: padding-box;
+    position: relative;
+}
+
+
+
+#todoCont::before,
+#doneCont::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom right, #008000, #EB4796);
+    z-index: -1;
+}
+
+#newtaskCard,
+#doneTaskCard {
+    border-radius: 10px;
+    border: 1px solid #007000;
+    background: linear-gradient(91deg, #C3E1C3 13.27%, #e5ffe500 111.42%);
+    box-shadow: 0px 4px 2px 0px #0000001c;
+    cursor: grab;
+}
+
+#doneTaskCard {
+    border: 1px solid #6F47EB;
+    background: linear-gradient(91deg, #fbe468ab 13.27%, #ffece500 111.42%);
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.11);
+}
+
+.del-icon {
+    color: #f0147b;
+}
+
+
+/*  */
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border: 1px solid #700070;
+    border-radius: 10px;
+    padding-left: 10px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(91deg, #d67900d2 13.27%, #ffece500 111.42%);
+}
+
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-list.cdk-drop-list-dragging .task-column:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

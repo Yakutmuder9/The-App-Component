@@ -22,6 +22,6 @@ export class TaskService {
   }
 
   deleteTask(empId: number, taskId: string) {
-    return this.http.delete('/api/employees/' + empId + '/tasks' + taskId)
+    return this.http.delete('/api/employees/' + empId + '/tasks/' + taskId)
   }
 }

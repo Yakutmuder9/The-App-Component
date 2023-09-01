@@ -8,10 +8,14 @@
 import { Component } from '@angular/core';
 import { Employee } from '../employee.interface';
 import { Item } from '../item.interface';
-import { FormGroup } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { CookieService } from 'ngx-cookie-service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-tasks',
@@ -19,7 +23,6 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
-  
   // variables
   employee: Employee
   empId: number
@@ -102,13 +105,6 @@ export class TasksComponent {
 
   }
 
-  hideAlert() {
-    setTimeout(() => {
-      this.errorMessage = ''
-      this.successMessage = ''
-    }, 3000)
-  }
-
   deleteTask(taskId: string) {
     console.log('Task item: ', taskId);
 
@@ -117,7 +113,7 @@ export class TasksComponent {
     ) { return }
 
     this.taskService.deleteTask(this.empId, taskId).subscribe({
-      next: () => {
+      next: (res: any) => {
         console.log('Task deleted wtih Id: ', taskId);
 
         this.todo = this.todo.filter(t => t._id?.toString() !== taskId)
@@ -137,6 +133,53 @@ export class TasksComponent {
 
   }
 
+  drop(event: CdkDragDrop<any[]>) {
+    console.log("dra");
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+
+      console.log("Moved item in array", event.container.data);
+
+      this.updateTaskList(this.empId, this.todo, this.done)
+
+      // call update api
+
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+      console.log("Moved item array", event.container.data);
+
+      this.updateTaskList(this.empId, this.todo, this.done)
+      //  call update api
+
+    }
+  }
+
+  updateTaskList(empId: number, todo: Item[], done: Item[]) {
+    this.taskService.updateTask(empId, todo, done).subscribe({
+      next: (res: any) => {
+        console.log("Task update successfuly");
+      },
+      error: (err) => {
+        console.log("err", err);
+        this.errorMessage = err.message
+        this.hideAlert()
+      }
+    })
+  }
+
+  hideAlert() {
+    setTimeout(() => {
+      this.errorMessage = ''
+      this.successMessage = ''
+    }, 3000)
+  }
+
   getTask(text: string, categoryName: string) {
     let task: Item = {} as Item
 
@@ -144,6 +187,7 @@ export class TasksComponent {
     const green = "#4BCE97"
     const purple = "#9F8FEF"
     const red = "#F87462"
+
 
     switch (categoryName) {
       case 'testing':
