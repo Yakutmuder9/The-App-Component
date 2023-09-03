@@ -28,14 +28,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Employee details successfully retrieved",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Employee"
-                }
-              }
-            }
+            "description": "Employee details successfully retrieved"
           },
           "400": {
             "description": "Bad Request - Input must be a number"
@@ -72,7 +65,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Task"
+                "$ref": "#/components/schemas/TaskSchema",
+                "example": {
+                  "text": "string",
+                  "category": {
+                    "categoryName": "string",
+                    "backgroundColor": "string"
+                  }
+                }
               }
             }
           }
@@ -114,7 +114,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tasks"
+                "$ref": "#/components/schemas/TasksSchema",
+                "example": {
+                  "todo": [
+                    {
+                      "_id": "string",
+                      "text": "string",
+                      "category": {
+                        "categoryName": "string",
+                        "backgroundColor": "string"
+                      }
+                    }
+                  ],
+                  "done": [
+                    {
+                      "_id": "string",
+                      "text": "string",
+                      "category": {
+                        "categoryName": "string",
+                        "backgroundColor": "string"
+                      }
+                    }
+                  ]
+                }
               }
             }
           }
