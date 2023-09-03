@@ -11,6 +11,7 @@ import { FormBuilder, Validators } from "@angular/forms"
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
+// the session user
 export interface SessaionUser {
   empId: number;
   firstName: string;
@@ -27,6 +28,7 @@ export class SigninComponent {
   sessionUser: SessaionUser
   isLoading: boolean = false
 
+  // signin form with validation
   signinForm = this.fb.group({
     empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
   })
@@ -42,23 +44,26 @@ export class SigninComponent {
     this.errorMessage = ''
   }
 
+  // Handle the sign-in process
   signin() {
     console.log("empId");
 
     this.isLoading = true;
     const empId = this.signinForm.controls['empId'].value
-   
 
+    // Validate the employee ID
     if (!empId || isNaN(parseInt(empId, 10))) {
       this.errorMessage = 'The employee ID you entered is invalid, please try again.'
       this.isLoading = false
       return
     }
-    
+
+    // Fetch employee information using the SecurityService
     this.secService.findEmployeeById(empId).subscribe({
       next: (employee: any) => {
         this.sessionUser = employee
 
+        // Set session cookies
         this.cookieService.set("session_user", empId, 1)
         this.cookieService.set('session_name', `${employee.firstName} ${employee.lastName}`, 1)
         const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/'

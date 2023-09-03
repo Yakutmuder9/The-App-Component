@@ -1,3 +1,12 @@
+/*
+============================================
+; Title:  app.js
+; Author: Professor Krasso
+; Modified By: Yakut Ahmedin
+; Date:   24 Aug 2023
+; Description: About component
+;===========================================
+*/
 import { Component } from '@angular/core';
 
 @Component({

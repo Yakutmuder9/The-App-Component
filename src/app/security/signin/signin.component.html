@@ -1,7 +1,8 @@
 <div class="signin-page">
   <div class="container">
     <div class="row justify-content-center mt-5 h-100">
-      <div class="col-6 col-sm-6 left-signin-txt p-5">
+      <!-- Left column for introductory text -->
+      <div class="col-md-6 left-signin-txt p-5 d-none d-md-flex">
         <h1>
           <i>Nodebuket <span>.</span></i>
         </h1>
@@ -12,15 +13,19 @@
           </i>
         </p>
       </div>
-      <div class="col-6 col-sm-6 px-4 py-5 left-signin-form">
+
+      <!-- Right column for sign-in form -->
+      <div class="col-12 col-md-6 px-4 py-5 left-signin-form">
         <div class="card-title text-center border-bottom">
           <h2 class="p-3 mt-2 bolder">Employee Sign In</h2>
         </div>
 
+        <!-- Display Error Message if Present -->
         <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
           {{ errorMessage }}
         </div>
 
+        <!-- Sign-In Form -->
         <form
           [formGroup]="signinForm"
           (ngSubmit)="signin(); signinForm.reset()"
@@ -36,6 +41,7 @@
             />
           </div>
 
+          <!-- Sign-in button with loading spinner -->
           <div class="d-grid">
             <button type="submit" class="btn btn-dark">
               <span *ngIf="!isLoading">Sign in</span>
@@ -52,9 +58,9 @@
           </div>
         </form>
 
+        <!-- Link to return to home page -->
         <a routerLink="/" class="text-dark text-underline-hover pt-3">Return</a>
       </div>
-
     </div>
   </div>
 </div>

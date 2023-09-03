@@ -7,7 +7,7 @@
 ; Description: employee routes
 ;===========================================
 */
-"use strict";
+"use strict"; // Enable strict mode to catch common coding mistakes
 
 const express = require("express");
 const { mongo } = require("../utils/mongo");
@@ -39,6 +39,7 @@ const taskSchema = {
   additionalProperties: false,
 };
 
+// Define the schema for all the tasks
 const tasksSchema = {
   type: "object",
   required: ["todo", "done"],

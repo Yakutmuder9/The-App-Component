@@ -1,3 +1,12 @@
+/*
+============================================
+; Title:  app.js
+; Author: Professor Krasso
+; Modified By: Yakut Ahmedin
+; Date:   14 Aug 2023
+; Description: page not found component
+;===========================================
+*/
 import { Component } from '@angular/core';
 
 @Component({

@@ -11,9 +11,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-security',
   // router outlet for the security module
-  template: `
-            <router-outlet></router-outlet>
-  `,
+  template: `<router-outlet></router-outlet>`,
   styles: [
   ]
 })

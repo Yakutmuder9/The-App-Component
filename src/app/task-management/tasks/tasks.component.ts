@@ -23,6 +23,7 @@ import {
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
+
   // variables
   employee: Employee
   empId: number
@@ -31,6 +32,7 @@ export class TasksComponent {
   errorMessage: string
   successMessage: string
 
+  // form group for new task
   newTaskForm: FormGroup = this.fb.group({
     text: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
     category: [null]
@@ -41,14 +43,18 @@ export class TasksComponent {
     private taskService: TaskService,
     private fb: FormBuilder
   ) {
+
+    // Initialize variables
     this.employee = {} as Employee
     this.todo = []
     this.done = []
     this.errorMessage = ''
     this.successMessage = ''
 
+    // Get the employee's ID from cookies
     this.empId = parseInt(this.cookiesService.get("session_user"), 10)
 
+    // Fetch tasks for the employee
     this.taskService.getTask(this.empId).subscribe({
       next: (emp: any) => {
         console.log("emp", emp);
@@ -71,6 +77,7 @@ export class TasksComponent {
     })
   }
 
+  //  add a new task function
   addTask() {
     const text = this.newTaskForm.controls['text'].value
     const category = this.newTaskForm.controls['category'].value
@@ -105,6 +112,7 @@ export class TasksComponent {
 
   }
 
+  // delete a task function
   deleteTask(taskId: string) {
     console.log('Task item: ', taskId);
 
@@ -136,6 +144,8 @@ export class TasksComponent {
 
   }
 
+
+  // handle task drag and drop
   drop(event: CdkDragDrop<any[]>) {
     console.log("dra");
 
@@ -163,6 +173,7 @@ export class TasksComponent {
     }
   }
 
+  // update the task list
   updateTaskList(empId: number, todo: Item[], done: Item[]) {
     this.taskService.updateTask(empId, todo, done).subscribe({
       next: (res: any) => {
@@ -176,6 +187,7 @@ export class TasksComponent {
     })
   }
 
+  // hide error and success messages after a delay
   hideAlert() {
     setTimeout(() => {
       this.errorMessage = ''
@@ -183,6 +195,7 @@ export class TasksComponent {
     }, 3000)
   }
 
+  // create a new task with color based on its category
   getTask(text: string, categoryName: string) {
     let task: Item = {} as Item
 
