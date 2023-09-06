@@ -296,8 +296,8 @@ router.delete("/:empId/tasks/:taskId", (req, res, next) => {
         return;
       }
 
-      if(!emp.todo) emp.todo = []
-      if(!emp.done) emp.done = []
+      if (!emp.todo) emp.todo = [];
+      if (!emp.done) emp.done = [];
 
       const todoItems = emp.todo.filter(
         (task) => task._id.toString() !== taskId.toString()
